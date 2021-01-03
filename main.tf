@@ -25,7 +25,7 @@ data "null_data_source" "merged_fileset_with_hash_md5" {
   count = var.hash_algorithm == "md5" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filemd5(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filemd5("${var.base_directory}/${fn}")}"])
   }
 }
 
@@ -33,7 +33,7 @@ data "null_data_source" "merged_fileset_with_hash_sha1" {
   count = var.hash_algorithm == "sha1" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha1(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha1("${var.base_directory}/${fn}")}"])
   }
 }
 
@@ -41,7 +41,7 @@ data "null_data_source" "merged_fileset_with_hash_sha256" {
   count = var.hash_algorithm == "sha256" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha256(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha256("${var.base_directory}/${fn}")}"])
   }
 }
 
@@ -49,7 +49,7 @@ data "null_data_source" "merged_fileset_with_hash_sha512" {
   count = var.hash_algorithm == "sha512" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha512(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filesha512("${var.base_directory}/${fn}")}"])
   }
 }
 
@@ -57,7 +57,7 @@ data "null_data_source" "merged_fileset_with_hash_base64sha256" {
   count = var.hash_algorithm == "base64sha256" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filebase64sha256(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filebase64sha256("${var.base_directory}/${fn}")}"])
   }
 }
 
@@ -65,7 +65,7 @@ data "null_data_source" "merged_fileset_with_hash_base64sha512" {
   count = var.hash_algorithm == "base64sha512" ? 1 : 0
 
   inputs = {
-    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filebase64sha512(fn)}"])
+    files_with_hash = join(",", [for fn in local.merged_fileset : "${fn}=${filebase64sha512("${var.base_directory}/${fn}")}"])
   }
 }
 
