@@ -13,4 +13,9 @@ variable "hash_algorithm" {
   type        = string
   default     = "md5"
   description = "The algorithm to use to hash the files. Possible values: `md5`, `sha1`, `sha256`, `sha512`, `base64sha256`, `base64sha512`."
+
+  validation {
+    condition     = contains(["md5", "sha1", "sha256", "sha512", "base64sha256", "base64sha512"], var.hash_algorithm)
+    error_message = "Hash algorithm must be one of: md5, sha1, sha256, sha512, base64sha256 or base64sha512."
+  }
 }
