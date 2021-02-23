@@ -1,7 +1,7 @@
 # terraform-directory-change-watcher
 
 A Terraform module to make it possible to watch a directory for changes.
-There are alternate solutions like creating an archive file, but this solution don't require any temporary files.
+There are alternative solutions like creating an archive file, but this solution doesn't require any temporary files.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
